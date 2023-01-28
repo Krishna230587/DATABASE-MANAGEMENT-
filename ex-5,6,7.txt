@@ -1,0 +1,117 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql> create database library;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| college            |
+| employee           |
+| library            |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+7 rows in set (0.01 sec)
+
+mysql> use library;
+Database changed
+mysql> create table book_details(name varchar(25),dot int(8),dos int(8),bookname varchar(20),phoneno int(10));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc book_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(25) | YES  |     | NULL    |       |
+| dot      | int(8)      | YES  |     | NULL    |       |
+| dos      | int(8)      | YES  |     | NULL    |       |
+| bookname | varchar(20) | YES  |     | NULL    |       |
+| phoneno  | int(10)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)
+
+mysql> insert into book_details values('sreenadh',27,30,'dontknow',123456890);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc book_details;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(25) | YES  |     | NULL    |       |
+| dot      | int(8)      | YES  |     | NULL    |       |
+| dos      | int(8)      | YES  |     | NULL    |       |
+| bookname | varchar(20) | YES  |     | NULL    |       |
+| phoneno  | int(10)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select * from book_details;
++----------+------+------+----------+-----------+
+| name     | dot  | dos  | bookname | phoneno   |
++----------+------+------+----------+-----------+
+| sreenadh |   27 |   30 | dontknow | 123456890 |
++----------+------+------+----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> insert into book_details values('yadav',23,31,'know',987654320);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into book_details values('revi',25,29,' may i know',987654320);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from book_details;
++----------+------+------+-------------+-----------+
+| name     | dot  | dos  | bookname    | phoneno   |
++----------+------+------+-------------+-----------+
+| sreenadh |   27 |   30 | dontknow    | 123456890 |
+| yadav    |   23 |   31 | know        | 987654320 |
+| revi     |   25 |   29 |  may i know | 987654320 |
++----------+------+------+-------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from book_details where dot=22 and dot=25;
+Empty set (0.02 sec)
+
+mysql>  select * from book_details where dot=23 and dot=25;
+Empty set (0.00 sec)
+
+mysql> select * from book_details where dot between 23 and 26;
++-------+------+------+-------------+-----------+
+| name  | dot  | dos  | bookname    | phoneno   |
++-------+------+------+-------------+-----------+
+| yadav |   23 |   31 | know        | 987654320 |
+| revi  |   25 |   29 |  may i know | 987654320 |
++-------+------+------+-------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from book_details where dos=29;
++------+------+------+-------------+-----------+
+| name | dot  | dos  | bookname    | phoneno   |
++------+------+------+-------------+-----------+
+| revi |   25 |   29 |  may i know | 987654320 |
++------+------+------+-------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select dos,dot from book_details;
++------+------+
+| dos  | dot  |
++------+------+
+|   30 |   27 |
+|   31 |   23 |
+|   29 |   25 |
++------+------+
+3 rows in set (0.00 sec)
